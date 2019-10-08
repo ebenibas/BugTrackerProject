@@ -1,0 +1,146 @@
+﻿@model IEnumerable<BugTrackerProject.Models.Ticket>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetList1</title>
+
+    @Scripts.Render("~/bundles/jquery")
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table id="table" class="display">
+        <thead>
+            <tr>
+                <th>
+                    AssignedToUser.Email
+                </th>
+                <th>
+                    OwnerUser.Email
+                </th>
+                <th>
+                    Project.Name
+                </th>
+                <th>
+                    TicketPriority.Name
+                </th>
+                <th>
+                    TicketStatus.Name
+                </th>
+                <th>
+                    TicketType.Name
+                </th>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Created
+                </th>
+                <th>
+                    Updated
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.AssignedToUser.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.OwnerUser.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.Project.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.TicketPriority.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.TicketStatus.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.TicketType.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.Created)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.Updated)
+                    </th>
+                    <th>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </th>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>
+                    AssignedToUser.Email
+                </th>
+                <th>
+                    OwnerUser.Email
+                </th>
+                <th>
+                    Project.Name
+                </th>
+                <th>
+                    TicketPriority.Name
+                </th>
+                <th>
+                    TicketStatus.Name
+                </th>
+                <th>
+                    TicketType.Name
+                </th>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Created
+                </th>
+                <th>
+                    Updated
+                </th>
+                <th></th>
+            </tr>
+        </tfoot>
+    </table>
+    <script>
+        $(document).ready(function () {
+            $("#table").DataTable();
+              
+            });
+    </script>
+</body>
+</html>

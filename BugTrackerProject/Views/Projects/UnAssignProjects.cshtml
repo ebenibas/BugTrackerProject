@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "UnAssignProjects";
+}
+
+<h2>UnAssignProjects</h2>
+@using (Html.BeginForm())
+{
+    @Html.DropDownList("userId", "Select User")
+    @Html.DropDownList("projectId", "Select Project")
+    <input type="submit" value=" UnAssign User" />
+}

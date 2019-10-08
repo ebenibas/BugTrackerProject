@@ -1,0 +1,82 @@
+﻿@model IEnumerable<BugTrackerProject.Models.Ticket>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<h2>Part 2: jQuery DataTable server side pagination and sorting in asp.net MVC</h2>
+<div style="width:90%; margin:0 auto;">
+    <table id="myTable">
+        <thead>
+            <tr>
+                <th>
+                    AssignedToUser.Email
+                </th>
+                <th>
+                    OwnerUser.Email
+                </th>
+                <th>
+                    Project.Name
+                </th>
+                <th>
+                    TicketPriority.Name
+                </th>
+                <th>
+                    TicketStatus.Name
+                </th>
+                <th>
+                    TicketType.Name
+                </th>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Created
+                </th>
+                <th>
+                    Updated
+                </th>
+
+
+            </tr>
+        </thead>
+    </table>
+</div>
+
+@* Load datatable css *@
+<link href="//cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" rel="stylesheet" />
+@section Scripts{
+    @* Load DataTable js here *@
+    <script src="//cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#myTable").DataTable({
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                "filter": false, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+                "ajax": {
+                    "url": "/Demo/LoadData",
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "AssignedToUserId", "name": "AssignedToUserId", "autoWidth": true },
+                    { "data": "OwnerUserId", "name": "OwnerUserId", "autoWidth": true },
+                    { "data": "ProjectId", "name": "ProjectId", "autoWidth": true },
+                    { "data": "TicketPriorityId", "name": "TicketPriorityId", "autoWidth": true },
+                    { "data": "TicketStatusId", "name": "TicketStatusId", "autoWidth": true },
+                    { "data": "TicketTypeId", "name": "TicketTypeId", "autoWidth": true },
+                    { "data": "Title", "name": "Title", "autoWidth": true },
+                    { "data": "Description", "name": "Description", "autoWidth": true },
+                    { "data": "Created", "name": "Created", "autoWidth": true },
+                    { "data": "Updated", "name": "Updated", "autoWidth": true },
+                ]
+            });
+        });
+    </script>
+}
